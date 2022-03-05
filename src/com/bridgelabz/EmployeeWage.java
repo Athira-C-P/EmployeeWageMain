@@ -9,42 +9,26 @@ public class EmployeeWage {
 
     public static void main(String[] args) {
         System.out.println("welcome to Employee Wage Computation Program");
-        int randomVal = (int) Math.floor(Math.random() * 10) % 3;
-        if (randomVal == 1) {
-            int empHrs = 8;
-            int empWage = WAGE_PER_HOUR * empHrs;
-
-            System.out.println("Emp Wage:" + empWage);
-
-            System.out.println("Employee is present");
+        int empHrs = 0;
+        int empWage = 0;
+        int totalEmpWage = 0;
+        int totalWorkingDays = 0;
+        while (totalWorkingDays < 20) {
+            int check = (int) Math.floor(Math.random() * 10) % 3;
+            switch (check) {
+                case IS_PART_TIME:
+                    empHrs = 4;
+                    break;
+                case IS_FULL_TIME:
+                    empHrs = 8;
+                    break;
+                default:
+                    empHrs = 0;
+            }
+            empWage = WAGE_PER_HOUR * empHrs;
+            totalEmpWage = totalEmpWage + empWage;
+            totalWorkingDays++;
         }
-            int empHrs = 0;
-            int empWage = 0;
-            int checkAttendance = (int)Math.floor(Math.random()*10)%3;
-            if(checkAttendance == IS_FULL_TIME){
-                System.out.println("Employee works for Full Time");
-                empHrs = 8;
-            }
-            else if(checkAttendance == IS_PART_TIME){
-                System.out.println("Employee works for Part Time");
-                empHrs = 4;
-            }
-
-        else {
-                System.out.println("Employee is Absent");
-            }
-        switch (checkAttendance){
-            case IS_PART_TIME:
-                System.out.println("Employee is present part time");
-                empHrs = 4;
-                break;
-            case IS_FULL_TIME:
-                System.out.println("Employee is present full time");
-                empHrs = 8;
-                break;
-            default:
-                System.out.println("Employee is Absent");
-                empHrs = 0;
-        }
+        System.out.println("Employee wage is " + totalEmpWage);
     }
 }
